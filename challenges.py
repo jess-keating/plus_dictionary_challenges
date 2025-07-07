@@ -20,7 +20,9 @@ def grocery_calculator(groceries: dict):
 
     Example output: 21.22
     """
-    pass
+     
+    return sum(groceries.values())  # Return the total cost of the grocery bill
+    
 
 def word_counter(word_list: list):
     """A function to count the occurrences of each word in a word list.
@@ -35,7 +37,16 @@ def word_counter(word_list: list):
 
     Example output: {"apple": 3, "banana": 2, "cherry": 1}
     """
-    pass
+
+    word_count_dict = {}
+
+    for word in word_list:
+        count = word_count_dict.get(word, 0) # get existing word count (default to 0)
+        word_count_dict.update({word: count + 1})
+    
+    return word_count_dict
+
+
 
 def create_colour_dict(file_path: str):
     """A function that accesses an indicated csv file of colour values and 
@@ -51,5 +62,19 @@ def create_colour_dict(file_path: str):
     Example input: "./data/colours_3_very_simple.csv"
     Example output: {"White": "#FFFFFF", "Black": "#000000", "Red": "#FF0000"}
     """
-    pass
+    colour_dict = {}
+
+    with open(file_path, "r") as csv_file:
+        csv_dictreader = csv.DictReader(csv_file)
+        for row in csv_dictreader:
+            if row:
+                colour_name = row["English"].strip()
+                hex_code = row["HEX"].strip()
+                colour_dict[colour_name] = hex_code
+
+    return colour_dict 
+        
+        
+        
+    
         
