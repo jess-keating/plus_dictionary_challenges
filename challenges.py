@@ -64,17 +64,16 @@ def create_colour_dict(file_path: str):
     """
     colour_dict = {}
 
-    with open(file_path, "r") as csv_file:
+    with open(file_path, "r", newline='') as csv_file:
         csv_dictreader = csv.DictReader(csv_file)
         for row in csv_dictreader:
-            if row:
+            if row and "English" in row and "HEX" in row:
                 colour_name = row["English"].strip()
                 hex_code = row["HEX"].strip()
                 colour_dict[colour_name] = hex_code
 
-    return colour_dict 
-        
-        
-        
-    
-        
+    return colour_dict
+
+
+
+
